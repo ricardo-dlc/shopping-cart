@@ -1,8 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ShoppingCart {
-    private ArrayList<Item> purchaseList = new ArrayList<Item>();
+    private List<Item> purchaseList;
+
+    public ShoppingCart() {
+        this.purchaseList = new ArrayList<>();
+    }
 
     public void add(Item item) {
         this.purchaseList.add(item);
