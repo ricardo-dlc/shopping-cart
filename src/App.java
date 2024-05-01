@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ShoppingCart shoppingCart = new ShoppingCart();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter initial card balance:");
@@ -21,24 +20,21 @@ public class App {
             double price = scanner.nextDouble();
             scanner.nextLine();
 
-            Item item = new Item(description, price);
+            Purchase purchase = new Purchase(description, price);
 
-            if (item.getPrice() > card.getBalance()) {
-                System.out.println("Insufficient balance!");
-                break;
+            if (card.makePurchase(purchase)) {
+                System.out.println("Enter 1 to continue, 0 to exit");
+                choice = scanner.nextInt();
+                scanner.nextLine();
             } else {
-                card.purchase(item.getPrice());
-                shoppingCart.add(item);
+                System.out.println("Insufficent balance!");
+                break;
             }
-
-            System.out.println("Enter 1 to continue, 0 to exit");
-            choice = scanner.nextInt();
-            scanner.nextLine();
         }
 
         System.out.println("*".repeat(100));
         System.out.println("Yor purchase history is:");
-        shoppingCart.showPurchaseHistory();
+        card.showShoppingHistory();
         System.out.println("*".repeat(100));
         System.out.println("Final card's balance is %.2f".formatted(card.getBalance()));
 

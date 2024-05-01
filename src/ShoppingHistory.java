@@ -2,20 +2,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ShoppingCart {
-    private List<Item> purchaseList;
+public class ShoppingHistory {
+    private List<Purchase> purchaseList;
 
-    public ShoppingCart() {
+    public ShoppingHistory() {
         this.purchaseList = new ArrayList<>();
     }
 
-    public void add(Item item) {
+    public void add(Purchase item) {
         this.purchaseList.add(item);
     }
 
-    public void showPurchaseHistory() {
+    public void show() {
         Collections.sort(this.purchaseList);
-        for (Item item : purchaseList) {
+        for (Purchase item : purchaseList) {
             System.out.println(item);
         }
     }
